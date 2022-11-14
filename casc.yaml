@@ -1,0 +1,30 @@
+jenkins:
+  systemMessage: "Example of configuring credentials in Jenkins"
+  authorizationStrategy:
+    roleBased:
+      roles:
+        global:
+          - name: "admin"
+            description: "Jenkins administrators"
+            permissions:
+              - "Overall/Administer"
+            assignments:
+              - "admin"
+          - name: "readonly"
+            description: "Read-only users"
+            permissions:
+              - "Overall/Read"
+              - "Job/Read"
+            assignments:
+              - "authenticated"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          password: "admin"
+
+unclassified:
+  locale:
+    systemLocale: en
+    ignoreAcceptLanguage: true

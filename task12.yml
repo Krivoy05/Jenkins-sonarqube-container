@@ -1,0 +1,37 @@
+version: '3'
+services:
+  jenkins:
+    build: 
+      context: ./
+      dockerfile: Dockerfile_jenkins
+    volumes:
+      - jenkins_data:/var/jenkins_home
+    ports:
+      - 8080:8080
+      - 50000:50000
+
+  sonarqube:
+    image: sonarqube
+    ports:
+      - 9000:9000
+      - 9092:9092
+    volumes: 
+      - ./sonar.properties:/conf/sonar.properties
+    depends_on:
+      - db
+  
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+
+volumes:
+  jenkins_data:
+    driver: local
+  db:
+    driver: local 

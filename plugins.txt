@@ -1,0 +1,6 @@
+ec2:2.0.3
+s3:0.12.3436.v674b_46258039
+aws-java-sdk-iam:1.12.287-357.vf82d85a_6eefd
+locale:204.v2a_f305fe7e9d
+configuration-as-code:1569.vb_72405b_80249
+role-strategy:562.v44e9a_e828d0e
